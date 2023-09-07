@@ -9,13 +9,30 @@ import { MessageService } from '../services/message.service';
 })
 export class UsersComponent {
   user: User = {
-    gender: '',
-    name: '',
+    gender: 'male',
+    name: 'dd',
     picture: {
-      large: '',
+      large: 'https://randomuser.me/api/portraits/men/9.jpg',
     },
-    location: '',
-    email: '',
+    location: {
+      street: {
+        number: 7792,
+        name: 'Torvbakkgata',
+      },
+      city: 'Åkrene',
+      state: 'Oppland',
+      country: 'Norway',
+      postcode: '8655',
+      coordinates: {
+        latitude: '41.6274',
+        longitude: '176.3368',
+      },
+      timezone: {
+        offset: '+5:30',
+        description: 'Bombay, Calcutta, Madras, New Delhi',
+      },
+    },
+    email: 'frffgdg',
   };
 
   constructor(
@@ -23,15 +40,15 @@ export class UsersComponent {
     private messageService: MessageService
   ) {}
 
-  ngOnInit(): void {
-    this.getUsers();
-  }
+  // ngOnInit(): void {
+  //   this.getUsers();
+  // }
 
-  getUsers(): void {
-    this.userService.getHeroes().subscribe((user) => {
-      console.log(user);
+  // getUsers(): void {
+  //   this.userService.getHeroes().subscribe((user) => {
+  //     console.log(user);
 
-      return (this.user = user);
-    });
-  }
+  //     return (this.user = user);
+  //   });
+  // }
 }
