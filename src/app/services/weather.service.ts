@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +13,7 @@ export class WeatherService {
     private messageService: MessageService
   ) {}
 
-  private heroesUrl =
-    'https://api.open-meteo.com/v1/forecast?latitude=-19.7962&lo777ngitude=178.2180&current_weather=true&hourly=temperature_2m';
+  private heroesUrl = 'https://api.open-meteo.com/v1/forecast';
 
   private log(message: string) {
     this.messageService.add(`WeatherService: ${message}`);
@@ -27,9 +26,16 @@ export class WeatherService {
       return of(result as T);
     };
   }
+  // ?latitude=-19.7962&longitude=178.2180&current_weather=true&hourly=temperature_2m`
+  getWeather(location: any): Observable<any> {
+    console.log(location);
+    const params = new HttpParams()
+      .set('latitude', location?.coordinates?.latitude)
+      .set('longitude', location?.coordinates?.longitude)
+      .set('current_weather', true)
+      .set('hourly', 'temperature_2m');
 
-  getWeather(): Observable<any> {
-    return this.http.get<any>(this.heroesUrl).pipe(
+    return this.http.get<any>(this.heroesUrl, { params }).pipe(
       tap(() => this.log('fetched weather.')),
       catchError(this.handleError<any>('getWeather', []))
     );
