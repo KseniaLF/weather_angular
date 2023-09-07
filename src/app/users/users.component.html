@@ -7,14 +7,18 @@
   <input id="name" [(ngModel)]="user.name" placeholder="name" />
 </div> -->
 
-<h2>My Heroes</h2>
-<ul class="heroes">
-  <li *ngFor="let user of users">
-    <button type="button" (click)="onSelect(user)">
-      <span class="badge">{{ user.id }}</span>
-      <span class="name">{{ user.name }}</span>
-    </button>
-  </li>
-</ul>
+<img
+  src="https://i.pinimg.com/originals/f9/aa/a4/f9aaa4a9a402503edd577d665fb22d5b.gif"
+  alt="Описание анимации"
+/>
 
-<app-user-weather [user]="selectedUser"></app-user-weather>
+<p class="name">
+  Name: {{ user.name.first }} {{ user.name.last }} ({{ user.name.title }})
+</p>
+<p class="badge">Gender: {{ user.gender }}</p>
+<p class="badge">Location: {{ user.location.city }}</p>
+<p class="badge">Email: {{ user.email }}</p>
+
+<img [src]="user.picture.large" alt="avatar" />
+
+<!-- <app-user-weather [user]="selectedUser"></app-user-weather> -->

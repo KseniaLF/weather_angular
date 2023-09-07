@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { User, UserService } from '../services/user.service';
 import { MessageService } from '../services/message.service';
-
-export interface User {
-  id: number;
-  name: string;
-}
 
 @Component({
   selector: 'app-users',
@@ -13,8 +8,15 @@ export interface User {
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent {
-  selectedUser?: User;
-  users: User[] = [];
+  user: User = {
+    gender: '',
+    name: '',
+    picture: {
+      large: '',
+    },
+    location: '',
+    email: '',
+  };
 
   constructor(
     private userService: UserService,
@@ -25,12 +27,11 @@ export class UsersComponent {
     this.getUsers();
   }
 
-  onSelect(user: User): void {
-    this.selectedUser = user;
-    this.messageService.add(`HeroesComponent: Selected hero id=${user.id}`);
-  }
-
   getUsers(): void {
-    this.userService.getHeroes().subscribe((users) => (this.users = users));
+    this.userService.getHeroes().subscribe((user) => {
+      console.log(user);
+
+      return (this.user = user);
+    });
   }
 }

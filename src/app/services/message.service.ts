@@ -8,6 +8,10 @@ export class MessageService {
 
   add(message: string) {
     this.messages.push(message);
+
+    setTimeout(() => {
+      this.messages = this.messages.filter((msg) => msg !== message);
+    }, 10000);
   }
 
   clear() {

@@ -1,0 +1,35 @@
+.message {
+  /* color: #a80000; */
+  color: #00a835;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 40px;
+
+  text-align: center;
+  width: 300px;
+}
+
+.text {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #00a835;
+  border-radius: 5px;
+}
+
+.clear {
+  color: #333;
+  background-color: #eee;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin: 0;
+}
+.clear:hover {
+  color: white;
+  background-color: #42545c;
+}

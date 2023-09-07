@@ -1,32 +1,47 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
+import { HttpClient } from '@angular/common/http';
 
-interface User {
-  id: number;
-  name: string;
+export interface User {
+  name: any;
+  gender: string;
+  picture: { large: string };
+  location: any;
+  email: string;
 }
-export const USERS: User[] = [
-  { id: 12, name: 'Dr. Nice' },
-  { id: 13, name: 'Bombasto' },
-  { id: 14, name: 'Celeritas' },
-  { id: 15, name: 'Magneta' },
-  { id: 16, name: 'RubberMan' },
-  { id: 17, name: 'Dynama' },
-  { id: 18, name: 'Dr. IQ' },
-  { id: 19, name: 'Magma' },
-  { id: 20, name: 'Tornado' },
-];
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private messageService: MessageService) {}
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService
+  ) {}
 
-  getHeroes(): Observable<User[]> {
-    const users = of(USERS);
-    this.messageService.add('HeroService: fetched heroes');
-    return users;
+  private heroesUrl = 'https://randomuser.me/api';
+
+  private log(message: string) {
+    this.messageService.add(`HeroService: ${message}`);
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      this.log(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
+  }
+
+  getHeroes(): Observable<User> {
+    return this.http.get<User>(this.heroesUrl).pipe(
+      tap((res) => {
+        this.log('fetched user');
+      }),
+      map(({ results }: any) => results[0]),
+      catchError(this.handleError<any>('getHeroes', []))
+    );
   }
 }
