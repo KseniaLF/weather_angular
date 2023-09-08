@@ -31,8 +31,10 @@ export class WeatherService {
     const params = new HttpParams()
       .set('latitude', location?.coordinates?.latitude)
       .set('longitude', location?.coordinates?.longitude)
+      .set('hourly', 'temperature_2m')
       .set('current_weather', true)
-      .set('hourly', 'temperature_2m');
+      .set('daily', 'temperature_2m_max,temperature_2m_min')
+      .set('timezone', 'GMT');
 
     return this.http
       .get<any>(this.heroesUrl, { params })
