@@ -21,7 +21,7 @@ export class UserService {
     private messageService: MessageService
   ) {}
 
-  private heroesUrl = 'https://randomuser.me/api';
+  private url = 'https://randomuser.me/api';
 
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
@@ -30,18 +30,18 @@ export class UserService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-      this.log(`${operation} failed: ${error.message}`);
+      this.log(`${operation} failed: ${error.error}`);
       return of(result as T);
     };
   }
 
-  getHeroes(): Observable<User> {
-    return this.http.get<User>(this.heroesUrl).pipe(
+  getUser(): Observable<User> {
+    return this.http.get<User>(this.url).pipe(
       tap((res) => {
         this.log('fetched user');
       }),
-      map(({ results }: any) => results[0]),
-      catchError(this.handleError<any>('getHeroes', []))
+      map(({ results: [user] }: any) => user),
+      catchError(this.handleError<User>('getHeroes'))
     );
   }
 }

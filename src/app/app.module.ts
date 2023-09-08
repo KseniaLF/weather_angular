@@ -3,13 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { UsersComponent } from './users/users.component';
 import { FormsModule } from '@angular/forms';
 import { MessagesComponent } from './components/messages/messages.component';
 import { WeatherComponent } from './components/weather/weather.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
-  declarations: [AppComponent, UsersComponent, MessagesComponent, WeatherComponent],
+  declarations: [
+    AppComponent,
+    MessagesComponent,
+    WeatherComponent,
+    UserComponent,
+  ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,20 @@
+<div *ngIf="user?.name">
+  <img [src]="user.picture.large" alt="avatar" />
+
+  <p class="name">
+    Name: {{ user.name.first }} {{ user.name.last }} ({{ user.name.title }})
+  </p>
+  <p class="badge">Gender: {{ user.gender }}</p>
+  <p class="badge">Location: {{ user.location.city }}</p>
+  <p class="badge">Email: {{ user.email }}</p>
+</div>
+
+<app-weather *ngIf="user?.location" [location]="user.location"></app-weather>
+
+<div *ngIf="!user?.name">
+  <img
+    src="https://i.pinimg.com/originals/f9/aa/a4/f9aaa4a9a402503edd577d665fb22d5b.gif"
+    alt="weather gif"
+  />
+  <p>No data available 😔</p>
+</div>

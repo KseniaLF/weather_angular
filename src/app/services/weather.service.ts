@@ -26,7 +26,7 @@ export class WeatherService {
       return of(result as T);
     };
   }
-  // ?latitude=-19.7962&longitude=178.2180&current_weather=true&hourly=temperature_2m`
+
   getWeather(location: any): Observable<any> {
     console.log(location);
     const params = new HttpParams()
