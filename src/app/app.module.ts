@@ -7,6 +7,9 @@ import { FormsModule } from '@angular/forms';
 import { MessagesComponent } from './components/messages/messages.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { UserComponent } from './components/user/user.component';
+import { AppRoutingModule } from './app-routing.module';
+import { SavedComponent } from './components/saved/saved.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -14,8 +17,10 @@ import { UserComponent } from './components/user/user.component';
     MessagesComponent,
     WeatherComponent,
     UserComponent,
+    SavedComponent,
+    CardComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

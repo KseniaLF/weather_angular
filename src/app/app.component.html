@@ -1,4 +1,10 @@
 <h1>{{ title }}</h1>
-<app-messages></app-messages>
 
-<app-user></app-user>
+<nav>
+  <a routerLink="/user">User</a>
+  <a routerLink="/saved">Saved</a>
+</nav>
+
+<router-outlet></router-outlet>
+
+<app-messages></app-messages>

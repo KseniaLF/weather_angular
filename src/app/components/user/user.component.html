@@ -1,15 +1,10 @@
 <div *ngIf="user?.name">
-  <img [src]="user.picture.large" alt="avatar" />
+  <app-card [user]="user"></app-card>
 
-  <p class="name">
-    Name: {{ user.name.first }} {{ user.name.last }} ({{ user.name.title }})
-  </p>
-  <p class="badge">Gender: {{ user.gender }}</p>
-  <p class="badge">Location: {{ user.location.city }}</p>
-  <p class="badge">Email: {{ user.email }}</p>
+  <!-- <app-weather *ngIf="user?.location" [location]="user.location"></app-weather> -->
+
+  <button type="button" (click)="onSave()">Save</button>
 </div>
-
-<app-weather *ngIf="user?.location" [location]="user.location"></app-weather>
 
 <div *ngIf="!user?.name">
   <img
