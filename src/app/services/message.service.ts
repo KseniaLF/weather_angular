@@ -5,16 +5,25 @@ import { Injectable } from '@angular/core';
 })
 export class MessageService {
   messages: string[] = [];
+  error?: string = '';
 
-  add(message: string) {
+  //  by default - success message
+
+  add(message: string, error?: string) {
     this.messages.push(message);
 
     setTimeout(() => {
       this.messages = this.messages.filter((msg) => msg !== message);
-    }, 10000);
+    }, 7000);
+
+    this.error = error;
   }
 
   clear() {
     this.messages = [];
+  }
+
+  getColorClass() {
+    return this.error ? 'red-text' : 'green-text';
   }
 }

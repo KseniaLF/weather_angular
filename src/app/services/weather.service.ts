@@ -15,29 +15,27 @@ export class WeatherService {
 
   private heroesUrl = 'https://api.open-meteo.com/v1/forecast';
 
-  private log(message: string) {
-    this.messageService.add(`WeatherService: ${message}`);
+  private log(message: string, status?: string) {
+    this.messageService.add(`WeatherService: ${message}`, status);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-      this.log(`${operation} failed.`);
+      this.log(`${operation} failed.`, 'error');
       return of(result as T);
     };
   }
 
   getWeather(location: any): Observable<any> {
-    console.log(location);
     const params = new HttpParams()
       .set('latitude', location?.coordinates?.latitude)
       .set('longitude', location?.coordinates?.longitude)
       .set('current_weather', true)
       .set('hourly', 'temperature_2m');
 
-    return this.http.get<any>(this.heroesUrl, { params }).pipe(
-      tap(() => this.log('fetched weather.')),
-      catchError(this.handleError<any>('getWeather', []))
-    );
+    return this.http
+      .get<any>(this.heroesUrl, { params })
+      .pipe(catchError(this.handleError<any>('getWeather', [])));
   }
 }

@@ -1,7 +1,13 @@
-.message {
-  /* color: #a80000; */
+.red-text {
+  color: #a80000;
+  border: 1px solid #a80000;
+}
+.green-text {
   color: #00a835;
+  border: 1px solid #00a835;
+}
 
+.message {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 
@@ -11,14 +17,14 @@
   margin: 40px;
 
   text-align: center;
-  width: 300px;
 }
 
 .text {
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #00a835;
   border-radius: 5px;
+
+  background-color: #fff;
 }
 
 .clear {

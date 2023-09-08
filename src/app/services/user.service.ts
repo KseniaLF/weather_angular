@@ -21,27 +21,20 @@ export class UserService {
     private messageService: MessageService
   ) {}
 
-  private url = 'https://randomuser.me/api';
+  private url = 'https://randomuser.me/api/j';
 
-  private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
+  private handleError<T>(result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-      this.log(`${operation} failed: ${error.error}`);
+      this.messageService.add('Something went wrong, try again.', 'error');
       return of(result as T);
     };
   }
 
   getUser(): Observable<User> {
     return this.http.get<User>(this.url).pipe(
-      tap((res) => {
-        this.log('fetched user');
-      }),
       map(({ results: [user] }: any) => user),
-      catchError(this.handleError<User>('getHeroes'))
+      catchError(this.handleError<User>())
     );
   }
 }
