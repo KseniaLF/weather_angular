@@ -1,5 +1,9 @@
 <h2>Saved users:</h2>
 
-<div *ngFor="let user of users">
-  <app-card [user]="user"></app-card>
+<div class="user-list">
+  <div *ngFor="let user of users">
+    <div class="user-card">
+      <app-card [user]="user"></app-card>
+    </div>
+  </div>
 </div>

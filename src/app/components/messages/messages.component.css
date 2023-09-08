@@ -26,16 +26,3 @@
 
   background-color: #fff;
 }
-
-.clear {
-  color: #333;
-  background-color: #eee;
-  padding: 10px 15px;
-  border-radius: 4px;
-  font-size: 1rem;
-  margin: 0;
-}
-.clear:hover {
-  color: white;
-  background-color: #42545c;
-}

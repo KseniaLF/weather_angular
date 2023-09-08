@@ -14,7 +14,7 @@ export class MessageService {
 
     setTimeout(() => {
       this.messages = this.messages.filter((msg) => msg !== message);
-    }, 7000);
+    }, 5000);
 
     this.error = error;
   }

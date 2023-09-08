@@ -1,5 +1,13 @@
+:root {
+  --primary-color: #369;
+  --primary-color-light: rgb(90, 145, 199);
+  --secondary-color: #ff6600;
+
+  --transition: all 200ms linear;
+}
+
 h1 {
-  color: #369;
+  color: var(--primary-color);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
@@ -18,29 +26,53 @@ button {
   color: #333;
   font-family: Cambria, Georgia, serif;
 }
-button {
-  background-color: #eee;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  color: black;
-  font-size: 1.2rem;
-  padding: 1rem;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-}
-button:hover {
-  background-color: black;
-  color: white;
-}
-button:disabled {
-  background-color: #eee;
-  color: #aaa;
-  cursor: auto;
-}
 
-/* everywhere else */
 * {
   font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+nav {
+  margin-bottom: 20px;
+}
+nav a:first-child {
+  margin-right: 10px;
+}
+
+button,
+nav a {
+  display: inline-block;
+  font-size: 20px;
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: 5px 15px;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+nav a.active-link {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+button:hover,
+nav a:hover {
+  background-color: var(--primary-color-light);
+  color: #fff;
+}
+
+.user-card {
+  padding: 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 7px;
+  width: 300px;
+  text-align: center;
+}
+@media screen and (max-width: 500px) {
+  .user-card {
+    width: 100%;
+  }
 }
