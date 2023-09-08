@@ -21,7 +21,7 @@ export class UserService {
     private messageService: MessageService
   ) {}
 
-  private url = 'https://randomuser.me/api/j';
+  private url = 'https://randomuser.me/api';
 
   private handleError<T>(result?: T) {
     return (error: any): Observable<T> => {
