@@ -1,9 +1,11 @@
 <h2>Saved users:</h2>
 
-<div class="user-list">
+<div *ngIf="users" class="user-list">
   <div *ngFor="let user of users">
     <div class="user-card">
       <app-card [user]="user"></app-card>
     </div>
   </div>
 </div>
+
+<div *ngIf="!users">There's nothing here yet.😥</div>

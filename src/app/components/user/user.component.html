@@ -9,5 +9,8 @@
     src="https://i.pinimg.com/originals/f9/aa/a4/f9aaa4a9a402503edd577d665fb22d5b.gif"
     alt="weather gif"
   />
-  <p>No data available 😔</p>
+
+  <p *ngIf="!isLoading">No data available 😔</p>
+
+  <div *ngIf="isLoading">Loading...</div>
 </div>

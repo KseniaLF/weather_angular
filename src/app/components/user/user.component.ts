@@ -45,6 +45,8 @@ export class UserComponent {
   //   email: 'frffgdg',
   // };
 
+  isLoading: boolean = true;
+
   constructor(
     private userService: UserService,
     private messageService: MessageService,
@@ -69,6 +71,8 @@ export class UserComponent {
 
   getUsers(): void {
     this.userService.getUser().subscribe((user) => {
+      this.isLoading = false;
+
       return (this.user = user);
     });
   }
