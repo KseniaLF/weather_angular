@@ -1,16 +1,29 @@
-<div *ngIf="user?.name" class="user-card">
-  <app-card [user]="user"></app-card>
+<div class="container">
+  <div *ngIf="user?.name" class="user-card">
+    <app-card [user]="user"></app-card>
 
-  <button type="button" (click)="onSave()">Save</button>
-</div>
+    <button type="button" (click)="onSave()">Save</button>
+  </div>
 
-<div *ngIf="!user?.name">
-  <img
-    src="https://i.pinimg.com/originals/f9/aa/a4/f9aaa4a9a402503edd577d665fb22d5b.gif"
-    alt="weather gif"
-  />
+  <div *ngIf="!user?.name">
+    <img
+      src="https://i.pinimg.com/originals/f9/aa/a4/f9aaa4a9a402503edd577d665fb22d5b.gif"
+      alt="weather gif"
+    />
 
-  <p *ngIf="!isLoading">No data available 😔</p>
+    <p *ngIf="!isLoading">No data available 😔</p>
 
-  <div *ngIf="isLoading">Loading...</div>
+    <div *ngIf="isLoading">Loading...</div>
+  </div>
+
+  <div *ngIf="user?.name">
+    <div
+      class="map"
+      leaflet
+      [leafletOptions]="mapService.mapOptions"
+      [leafletLayer]="mapService.layer"
+    >
+      >
+    </div>
+  </div>
 </div>

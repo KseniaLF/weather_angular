@@ -10,6 +10,7 @@ import { UserComponent } from './components/user/user.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SavedComponent } from './components/saved/saved.component';
 import { CardComponent } from './components/card/card.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,13 @@ import { CardComponent } from './components/card/card.component';
     SavedComponent,
     CardComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    LeafletModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
