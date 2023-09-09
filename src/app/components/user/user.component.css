@@ -1,11 +1,13 @@
 .container {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 40px;
 }
 
+.chart-container,
 .map {
   height: 400px;
-  max-width: 700px;
+  max-width: 600px;
   width: 80vw;
 }

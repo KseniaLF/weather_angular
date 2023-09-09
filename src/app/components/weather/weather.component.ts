@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { latLng, tileLayer } from 'leaflet';
+import { ChartService } from 'src/app/services/chart.service';
 import { User } from 'src/app/services/user.service';
 import { WeatherService } from 'src/app/services/weather.service';
 
@@ -15,7 +16,10 @@ export class WeatherComponent {
   weatherIcon: string = '';
   intervalId: any;
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(
+    private weatherService: WeatherService,
+    public chartService: ChartService
+  ) {}
 
   ngOnInit(): void {
     this.getWeather();
@@ -40,6 +44,9 @@ export class WeatherComponent {
       this.weather = weather;
 
       this.weatherIcon = this.getIcon();
+
+      this.chartService.createChart(this.weather);
+
       return;
     });
   }

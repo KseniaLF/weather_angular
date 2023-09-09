@@ -4,6 +4,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { MessageService } from 'src/app/services/message.service';
 import { User, UserService } from 'src/app/services/user.service';
 import { MapService } from 'src/app/services/map.service';
+import { ChartService } from 'src/app/services/chart.service';
 
 @Component({
   selector: 'app-user',
@@ -54,7 +55,7 @@ export class UserComponent {
     private userService: UserService,
     private messageService: MessageService,
     private localStorageService: LocalStorageService,
-    public mapService: MapService
+    public mapService: MapService // public chartService: ChartService
   ) {}
 
   ngOnInit(): void {
