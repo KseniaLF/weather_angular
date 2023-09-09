@@ -1,7 +1,9 @@
+import { tileLayer, latLng, circle, polygon, marker } from 'leaflet';
 import { Component } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { MessageService } from 'src/app/services/message.service';
 import { User, UserService } from 'src/app/services/user.service';
+import { MapService } from 'src/app/services/map.service';
 
 @Component({
   selector: 'app-user',
@@ -18,6 +20,7 @@ export class UserComponent {
     location: '',
     email: '',
   };
+
   // user: User = {
   //   gender: 'male',
   //   name: 'dd',
@@ -34,8 +37,8 @@ export class UserComponent {
   //     country: 'Norway',
   //     postcode: '8655',
   //     coordinates: {
-  //       latitude: '41.6274',
-  //       longitude: '176.3368',
+  //       latitude: '12.6274',
+  //       longitude: '10.3368',
   //     },
   //     timezone: {
   //       offset: '+5:30',
@@ -50,11 +53,13 @@ export class UserComponent {
   constructor(
     private userService: UserService,
     private messageService: MessageService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    public mapService: MapService
   ) {}
 
   ngOnInit(): void {
     this.getUsers();
+    // this.mapService.initializeMap(this.user);
   }
 
   onSave(): void {
@@ -73,7 +78,10 @@ export class UserComponent {
     this.userService.getUser().subscribe((user) => {
       this.isLoading = false;
 
-      return (this.user = user);
+      this.user = user;
+      this.mapService.initializeMap(user);
+
+      return;
     });
   }
 }
