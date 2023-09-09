@@ -11,6 +11,8 @@ export class WeatherComponent {
   @Input() location?: any;
 
   weather?: any;
+  weatherIcon: string = '';
+
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit(): void {
@@ -21,7 +23,19 @@ export class WeatherComponent {
     this.weatherService.getWeather(this.location).subscribe((weather) => {
       console.log(weather);
 
-      return (this.weather = weather);
+      this.weather = weather;
+
+      this.weatherIcon = this.getIcon();
+      return;
     });
+  }
+
+  getIcon(): string {
+    const weathercode = this.weather?.current_weather?.weathercode;
+
+    if (weathercode == 0) return 'clear_day';
+    if (weathercode < 40) return 'partly_cloudy_day';
+    if (weathercode < 70) return 'rainy';
+    return 'cloudy_snowing';
   }
 }
