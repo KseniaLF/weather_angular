@@ -1,10 +1,8 @@
-import { tileLayer, latLng, circle, polygon, marker } from 'leaflet';
 import { Component } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { MessageService } from 'src/app/services/message.service';
 import { User, UserService } from 'src/app/services/user.service';
 import { MapService } from 'src/app/services/map.service';
-import { ChartService } from 'src/app/services/chart.service';
 
 @Component({
   selector: 'app-user',
@@ -22,45 +20,17 @@ export class UserComponent {
     email: '',
   };
 
-  // user: User = {
-  //   gender: 'male',
-  //   name: 'dd',
-  //   picture: {
-  //     large: 'https://randomuser.me/api/portraits/men/9.jpg',
-  //   },
-  //   location: {
-  //     street: {
-  //       number: 7792,
-  //       name: 'Torvbakkgata',
-  //     },
-  //     city: 'Åkrene',
-  //     state: 'Oppland',
-  //     country: 'Norway',
-  //     postcode: '8655',
-  //     coordinates: {
-  //       latitude: '12.6274',
-  //       longitude: '10.3368',
-  //     },
-  //     timezone: {
-  //       offset: '+5:30',
-  //       description: 'Bombay, Calcutta, Madras, New Delhi',
-  //     },
-  //   },
-  //   email: 'frffgdg',
-  // };
-
   isLoading: boolean = true;
 
   constructor(
     private userService: UserService,
     private messageService: MessageService,
     private localStorageService: LocalStorageService,
-    public mapService: MapService // public chartService: ChartService
+    public mapService: MapService
   ) {}
 
   ngOnInit(): void {
     this.getUsers();
-    // this.mapService.initializeMap(this.user);
   }
 
   onSave(): void {

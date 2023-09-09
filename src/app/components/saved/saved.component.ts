@@ -21,4 +21,9 @@ export class SavedComponent {
 
     this.users = data ? JSON.parse(data) : null;
   }
+
+  onClear(): void {
+    this.localStorageService.removeData();
+    this.users = [];
+  }
 }
