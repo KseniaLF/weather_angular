@@ -27,7 +27,7 @@ export class ChartService {
           labels: timeArray,
           datasets: [
             {
-              label: 'Температура (°C)',
+              label: 'Temperature (°C)',
               data: weather?.hourly?.temperature_2m.slice(0, 23),
               borderColor: 'blue',
               backgroundColor: 'rgba(0, 0, 255, 0.1)',
