@@ -12,14 +12,27 @@ export class WeatherComponent {
 
   weather?: any;
   weatherIcon: string = '';
+  intervalId: any;
 
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit(): void {
-    this.getUsers();
+    this.getWeather();
+
+    // Update current temperature periodically (every 5 minutes).
+    this.intervalId = setInterval(() => {
+      this.getWeather();
+    }, 5 * 60 * 1000);
   }
 
-  getUsers(): void {
+  ngOnDestroy(): void {
+    // Stopping the interval when a component is destroyed
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
+
+  getWeather(): void {
     this.weatherService.getWeather(this.location).subscribe((weather) => {
       console.log(weather);
 
