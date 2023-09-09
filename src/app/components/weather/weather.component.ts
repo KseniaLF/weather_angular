@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { latLng, tileLayer } from 'leaflet';
 import { ChartService } from 'src/app/services/chart.service';
-import { User } from 'src/app/services/user.service';
 import { WeatherService } from 'src/app/services/weather.service';
 
 @Component({
@@ -39,14 +37,9 @@ export class WeatherComponent {
 
   getWeather(): void {
     this.weatherService.getWeather(this.location).subscribe((weather) => {
-      console.log(weather);
-
       this.weather = weather;
-
       this.weatherIcon = this.getIcon();
-
       this.chartService.createChart(this.weather);
-
       return;
     });
   }
