@@ -1,11 +1,17 @@
 <h2>Saved users:</h2>
 
-<div *ngIf="users" class="user-list">
-  <div *ngFor="let user of users">
-    <div class="user-card">
-      <app-card [user]="user"></app-card>
+<div *ngIf="users?.length">
+  <div class="user-list">
+    <div *ngFor="let user of users">
+      <div class="user-card">
+        <app-card [user]="user"></app-card>
+      </div>
     </div>
+  </div>
+
+  <div class="clear">
+    <button type="button" (click)="onClear()">Сlear</button>
   </div>
 </div>
 
-<div *ngIf="!users">There's nothing here yet.😥</div>
+<div *ngIf="!users?.length">There's nothing here yet.😥</div>

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,9 +17,5 @@ export class LocalStorageService {
   }
   public removeData() {
     localStorage.removeItem(this.key);
-  }
-
-  public clearData() {
-    localStorage.clear();
   }
 }

@@ -17,6 +17,8 @@
   </div>
 
   <div *ngIf="user?.name">
+    <h2>User on the map:</h2>
+
     <div
       class="map"
       leaflet
@@ -24,6 +26,14 @@
       [leafletLayer]="mapService.layer"
     >
       >
+    </div>
+  </div>
+
+  <div>
+    <h2>Hourly weather for today:</h2>
+
+    <div class="chart-container">
+      <canvas id="temperatureChart"></canvas>
     </div>
   </div>
 </div>
